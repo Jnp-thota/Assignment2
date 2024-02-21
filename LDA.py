@@ -35,29 +35,20 @@ class LDA:
         self.shared_covariance = np.mean(class_covariances, axis=0)
 
     def predict(self, X_test):
-        # Initialize an array to store predicted labels
-        predictions = []
+        # Flatten the input images to 1D arrays
+        X_test_1d = X_test.reshape(X_test.shape[0], -1)
 
-        # Loop through each data point in the test set
-        for sample in X_test:
-            # Flatten the input image to a 1D array
-            sample_1d = sample.flatten()
+        # Calculate Mahalanobis distances to each class using matrix operations
+        mahalanobis_distances = np.zeros((X_test.shape[0], self.class_means.shape[0]))
 
-            # Calculate Mahalanobis distances to each class
-            mahalanobis_distances = []
-            for class_mean in self.class_means:
-                # Calculate Mahalanobis distance using the shared covariance matrix
-                mahalanobis_distance = np.sqrt(np.dot(np.dot((sample_1d - class_mean).T, np.linalg.inv(self.shared_covariance)), (sample_1d - class_mean)))
-                mahalanobis_distances.append(mahalanobis_distance)
+        for i, class_mean in enumerate(self.class_means):
+            diff = X_test_1d - class_mean
+            mahalanobis_distances[:, i] = np.sqrt(np.sum(np.dot(diff, np.linalg.inv(self.shared_covariance)) * diff, axis=1))
 
-            # Predict the class with the minimum Mahalanobis distance
-            predicted_class = np.argmin(mahalanobis_distances)
-            predictions.append(predicted_class)
+        # Predict the class with the minimum Mahalanobis distance
+        predictions = np.argmin(mahalanobis_distances, axis=1)
 
-        # Convert list to numpy array
-        return np.array(predictions)
-
-
+        return predictions
 
 # The rest of your code remains unchanged
 from utils import load_and_prepare_data

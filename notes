@@ -1,0 +1,68 @@
+****************************************
+*        RGB Benchmark Solution        *
+****************************************
+Loading data...done.
+****************************************
+*        LDA Benchmark Solution        *
+****************************************
+Fitting LDA model...done.
+Test accuracy: 0.3713
+
+****************************************
+*        QDA Benchmark Solution        *
+****************************************
+Fitting QDA model...done.
+Test accuracy: 0.3623
+
+****************************************
+*     Naive Bayes Benchmark Solution    *
+****************************************
+Fitting Naive Bayes model...done.
+Test accuracy: 0.2976
+
+****************************************
+*     Grayscale Benchmark Solution     *
+****************************************
+Loading data...done.
+****************************************
+*        LDA Benchmark Solution        *
+****************************************
+Fitting LDA model...done.
+Test accuracy: 0.2739
+
+****************************************
+*        QDA Benchmark Solution        *
+****************************************
+Fitting QDA model...done.
+Test accuracy: 0.4428
+
+****************************************
+*     Naive Bayes Benchmark Solution    *
+****************************************
+Fitting Naive Bayes model...done.
+Test accuracy: 0.2662
+
+
+
+Models Output::after
+
+****************************************
+*        QDA Solution        *
+****************************************
+Loading data...done
+fitting QDA model...done
+Accuracy of QDA Model : 0.3623
+
+****************************************
+*        LDA Solution        *
+****************************************
+Loading data...done.
+Fitting LDA model...done.
+Accuracy on the test data: 37.13%
+
+****************************************
+*     Gaussian Naive Bayes Solution    *
+****************************************
+Loading data...done.
+fitting Gaussian Naive Bayes model...done.
+Accuracy of Gaussina Naive Bayes model : 0.2976

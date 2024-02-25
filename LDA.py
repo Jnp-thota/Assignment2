@@ -1,8 +1,9 @@
 import numpy as np
+from utils import load_and_prepare_data
+from sklearn.metrics import accuracy_score
 
 class LDA:
     def __init__(self):
-        # Initialize any required variables
         self.class_means = None
         self.shared_covariance = None
 
@@ -50,16 +51,18 @@ class LDA:
 
         return predictions
 
-# The rest of your code remains unchanged
-from utils import load_and_prepare_data
-from sklearn.metrics import accuracy_score
+print("****************************************")
+print("*        LDA Solution        *")
+print("****************************************")
 
-# Load and prepare the data
+print("Loading data...", end="")
 X_train, y_train, X_test, y_test = load_and_prepare_data()
+print("done.")
 
-# Initialize and fit LDA model
+print("Fitting LDA model...", end="")
 lda_model = LDA()
 lda_model.fit(X_train, y_train)
+print("done.")
 
 # Make predictions on the test data
 predictions = lda_model.predict(X_test)

@@ -1,4 +1,6 @@
 import numpy as np
+from utils import load_and_prepare_data
+from sklearn.metrics import accuracy_score
 
 class GaussianNaiveBayes:
     def __init__(self):
@@ -65,21 +67,29 @@ class GaussianNaiveBayes:
         return np.array(predictions)
 
 
-from utils import load_and_prepare_data
-from sklearn.metrics import accuracy_score
 
-# Load CIFAR-10 data
+
+
+print("\n****************************************")
+print("*     Gaussian Naive Bayes Solution    *")
+print("****************************************")
+
+print("Loading data...",end="")
 X_train, y_train, X_test, y_test = load_and_prepare_data()
+print("done.")
 
 # Instantiate Gaussian Naive Bayes model
 gnb_model = GaussianNaiveBayes()
 
+
 # Fit the model to the training data
+print("fitting Gaussian Naive Bayes model...",end="")
 gnb_model.fit(X_train, y_train)
+print("done.")
 
 # Make predictions on the test data
 predictions = gnb_model.predict(X_test)
 
 # Calculate accuracy
 accuracy = accuracy_score(y_test, predictions)
-print(f'Accuracy: {accuracy}')
+print(f'Accuracy of Gaussina Naive Bayes model : {accuracy}')

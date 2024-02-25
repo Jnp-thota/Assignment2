@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 from joblib import Parallel, delayed
 from utils import load_and_prepare_data
 from sklearn.metrics import accuracy_score
@@ -52,37 +51,24 @@ class QDA:
 
         return predictions
     
-# Load CIFAR-10 data
+print("\n****************************************")
+print("*        QDA Solution        *")
+print("****************************************")
+
+print("Loading data...",end="")
 X_train, y_train, X_test, y_test = load_and_prepare_data()
+print("done")
 
 # Instantiate QDA model
 qda_model = QDA()
 
-# Fit the model to the training data
+print("fitting QDA model...",end="")
 qda_model.fit(X_train, y_train)
+print("done")
 
 # Make predictions on the test data
 predictions = qda_model.predict(X_test)
 
 # Calculate accuracy
 accuracy = accuracy_score(y_test, predictions)
-print(f'Accuracy: {accuracy}')
-
-'''X_train, y_train, X_test, y_test = load_and_prepare_data()
-
-# Resize images to 16x16
-X_train_resized = np.array([cv2.resize(img, (16, 16)) for img in X_train])
-X_test_resized = np.array([cv2.resize(img, (16, 16)) for img in X_test])
-
-# Instantiate QDA model
-qda_model = QDA()
-
-# Fit the model to the training data
-qda_model.fit(X_train_resized, y_train)
-
-# Make predictions on the resized test data
-predictions = qda_model.predict(X_test_resized)
-
-# Calculate accuracy
-accuracy = accuracy_score(y_test, predictions)
-print(f'Accuracy: {accuracy}')'''
+print(f'Accuracy of QDA Model : {accuracy}')
